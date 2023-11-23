@@ -33,6 +33,7 @@ heapless-bytes = "0.3.0"
 subtle = { version = "2", default-features = false }
 trussed-rsa-alloc = { version = "0.1.0", features = ["raw"], optional = true }
 trussed-staging = { version = "0.1.0", features = ["chunked", "encrypted-chunked"]}
+ctaphid-dispatch = { version = "0.1", optional = true }
 
 [dev-dependencies]
 littlefs2 = "0.3.2"
@@ -57,7 +58,7 @@ rand = "0.8.5"
 asn1 = "0.15.2"
 
 [features]
-default = []
+default = ["ctaphid"]
 strict-pin = []
 std = []
 vpicc = ["std", "dep:vpicc", "virt"]
@@ -66,6 +67,7 @@ pivy-tests = []
 opensc-tests = []
 alloc = []
 rsa = ["trussed-rsa-alloc", "alloc"]
+ctaphid = ["dep:ctaphid-dispatch"]
 
 log-all = []
 log-none = []
@@ -75,13 +77,15 @@ log-warn = []
 log-error = []
 
 [patch.crates-io]
-trussed = { git = "https://github.com/nitrokey/trussed" , tag = "v0.1.0-nitrokey.11" }
-trussed-auth = { git = "https://github.com/trussed-dev/trussed-auth.git", tag = "v0.2.2"}
+trussed = { git = "https://github.com/trussed-dev/trussed.git", rev = "d97c64d0bc5f83ce22b0e0ed034a2b451616b3f9" }
+trussed-auth = { git = "https://github.com/trussed-dev/trussed-auth", rev = "62235294bd63977bbb88eb01e7ac44b8010eb450" }
 trussed-rsa-alloc = { git = "https://github.com/trussed-dev/trussed-rsa-backend.git", tag = "v0.1.0"}
-trussed-staging = { git = "https://github.com/trussed-dev/trussed-staging", tag = "v0.1.0" }
+trussed-staging = { git = "https://github.com/nitrokey/trussed-staging.git", branch = "hmacsha256p256-rebased" }
 apdu-dispatch = { git = "https://github.com/Nitrokey/apdu-dispatch", tag = "v0.1.2-nitrokey.2" }
 trussed-usbip = { git = "https://github.com/Nitrokey/pc-usbip-runner.git", tag = "v0.0.1-nitrokey.1" }
 usbd-ccid = { git = "https://github.com/Nitrokey/usbd-ccid", tag = "v0.2.0-nitrokey.1" }
+ctaphid-dispatch = { git = "https://github.com/trussed-dev/ctaphid-dispatch.git", rev = "57cb3317878a8593847595319aa03ef17c29ec5b" }
+
 
 [profile.dev.package.rsa]
 opt-level = 2
