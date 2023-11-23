@@ -14,7 +14,6 @@ pub mod constants;
 pub mod container;
 use container::{AuthenticateKeyReference, Container, GenerateKeyReference, KeyReference};
 pub mod derp;
-#[cfg(feature = "apdu-dispatch")]
 mod dispatch;
 pub mod piv_types;
 mod reply;
@@ -33,7 +32,7 @@ use core::convert::TryInto;
 
 use flexiber::EncodableHeapless;
 use heapless_bytes::Bytes;
-use iso7816::{Data, Status};
+use iso7816::{command::CommandView, Data, Status};
 use trussed::types::{KeySerialization, Location, PathBuf, StorageAttributes};
 use trussed::{client, syscall, try_syscall};
 use trussed_auth::AuthClient;
@@ -151,9 +150,9 @@ where
         Ok(())
     }
 
-    pub fn respond<const R: usize, const C: usize>(
+    pub fn respond<const R: usize>(
         &mut self,
-        command: &iso7816::Command<C>,
+        command: &CommandView,
         reply: &mut Data<R>,
     ) -> Result {
         info!("PIV responding to {:02x?}", command);
