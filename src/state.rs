@@ -256,6 +256,7 @@ pub struct Volatile {
     // pub currently_selected_application: SelectableAid,
     pub app_security_status: AppSecurityStatus,
     pub command_cache: Option<CommandCache>,
+    pub active_transport: crate::dispatch::Transport,
 }
 
 #[derive(Clone, Debug, Default, Eq, PartialEq)]

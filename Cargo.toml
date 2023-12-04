@@ -58,7 +58,7 @@ rand = "0.8.5"
 asn1 = "0.15.2"
 
 [features]
-default = ["ctaphid"]
+default = ["ctaphid", "apdu-dispatch"]
 strict-pin = []
 std = []
 vpicc = ["std", "dep:vpicc", "virt"]
@@ -79,7 +79,7 @@ log-error = []
 [patch.crates-io]
 trussed = { git = "https://github.com/trussed-dev/trussed.git", rev = "d97c64d0bc5f83ce22b0e0ed034a2b451616b3f9" }
 trussed-auth = { git = "https://github.com/trussed-dev/trussed-auth", rev = "62235294bd63977bbb88eb01e7ac44b8010eb450" }
-trussed-rsa-alloc = { git = "https://github.com/trussed-dev/trussed-rsa-backend.git", tag = "v0.1.0"}
+trussed-rsa-alloc = { git = "https://github.com/trussed-dev/trussed-rsa-backend", rev = "baced761b2be0f207d88aca47fbe2fad4736618a" }
 trussed-staging = { git = "https://github.com/nitrokey/trussed-staging.git", branch = "hmacsha256p256-rebased" }
 apdu-dispatch = { git = "https://github.com/Nitrokey/apdu-dispatch", tag = "v0.1.2-nitrokey.2" }
 trussed-usbip = { git = "https://github.com/Nitrokey/pc-usbip-runner.git", tag = "v0.0.1-nitrokey.1" }
