@@ -133,7 +133,7 @@
             ),
             VerifyApplicationPin(pin: "FFEEDDCCBBAA9988", expected_status: RemainingRetries(2)),
             VerifyApplicationPin(pin: "FFEEDDCCBBAA9988", expected_status: RemainingRetries(1)),
-            VerifyApplicationPin(pin: "FFEEDDCCBBAA9988", expected_status: RemainingRetries(0)),
+            VerifyApplicationPin(pin: "FFEEDDCCBBAA9988", expected_status: OperationBlocked),
             Reset(),
         ]
     ),
